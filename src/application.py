@@ -17,11 +17,11 @@ def get():
 def post():
     return '{"Output":"Hello World"}'
 
-#
-# @application.route('/space', methods=['GET'])
-# def return_space():
-#     posts = db.get_initial_posts()
-#     return posts
+
+@application.route('/space', methods=['GET'])
+def return_space():
+    posts = db.get_initial_posts()
+    return posts
 
 if __name__ == '__main__':
     flaskrun(application)

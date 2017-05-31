@@ -2,10 +2,10 @@
 from flask import Flask
 from flaskrun import flaskrun
 import json
-from classes.db import Firebase
+from firebase import FirebaseAuthentication, FirebaseApplication
 
 application = Flask(__name__)
-db = Firebase()
+
 
 
 @application.route('/', methods=['GET'])
@@ -20,8 +20,12 @@ def post():
 
 @application.route('/space', methods=['GET'])
 def return_space():
-    posts = db.get_initial_posts()
-    return posts
+    firebase = FirebaseApplication('https://your_storage.firebaseio.com', authentication=None)
+    authentication = FirebaseAuthentication('kUFM5wAt2CkXtfKrglMjLPgNsuWsO33j1uKHMRyn', 'dhdepddl@gmail.com',
+                                            extra={'id': 123})
+    firebase.authentication = authentication
+    result = firebase.get('/cards', None, {'print': 'pretty'})
+    return result
 
 if __name__ == '__main__':
     flaskrun(application)

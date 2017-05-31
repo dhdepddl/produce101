@@ -1,1 +1,10 @@
 Flask==0.12.1
+sseclient
+lda
+konlpy
+python-firebase
+firebase-admin
+mecab-python
+numpy
+requests
+requests-oauthlib
